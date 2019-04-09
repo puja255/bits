@@ -4,7 +4,7 @@ pipeline {
   }
   environment {
     ORG = 'puja255'
-    APP_NAME = 'ec2-user'
+    APP_NAME = 'bits'
     CHARTMUSEUM_CREDS = credentials('jenkins-x-chartmuseum')
   }
   stages {
@@ -56,7 +56,7 @@ pipeline {
       }
       steps {
         container('python') {
-          dir('./charts/ec2-user') {
+          dir('./charts/bits') {
             sh "jx step changelog --version v\$(cat ../../VERSION)"
 
             // release the helm chart

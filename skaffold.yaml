@@ -7,7 +7,7 @@ build:
     docker: {}
   tagPolicy:
     envTemplate:
-      template: '{{.DOCKER_REGISTRY}}/puja255/ec2-user:{{.VERSION}}'
+      template: '{{.DOCKER_REGISTRY}}/puja255/bits:{{.VERSION}}'
   local: {}
 deploy:
   kubectl: {}
@@ -18,13 +18,13 @@ profiles:
     - docker: {}
     tagPolicy:
       envTemplate:
-        template: '{{.DOCKER_REGISTRY}}/puja255/ec2-user:{{.DIGEST_HEX}}'
+        template: '{{.DOCKER_REGISTRY}}/puja255/bits:{{.DIGEST_HEX}}'
     local: {}
   deploy:
     helm:
       releases:
-      - name: ec2-user
-        chartPath: charts/ec2-user
+      - name: bits
+        chartPath: charts/bits
         setValueTemplates:
-          image.repository: '{{.DOCKER_REGISTRY}}/puja255/ec2-user'
+          image.repository: '{{.DOCKER_REGISTRY}}/puja255/bits'
           image.tag: '{{.DIGEST_HEX}}'

@@ -14,7 +14,7 @@ env:
 knativeDeploy: false
 
 service:
-  name: ec2-user
+  name: bits
   type: ClusterIP
   externalPort: 80
   internalPort: 8080

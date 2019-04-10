@@ -1,13 +1,9 @@
-FROM alpine:3.1
-
-# Update
-RUN apk add --update python py-pip
-
-# Install app dependencies
-RUN pip install Flask
-
-# Bundle app source
-COPY simple_python_app.py /src/simple_python_app.py
-
-EXPOSE  8000
-CMD ["python", "/src/simple_python_app.py", "-p 8000"]
+FROM ubuntu:latest
+MAINTAINER Rajdeep Dua "dua_rajdeep@yahoo.com"
+RUN apt-get update -y
+RUN apt-get install -y python-pip python-dev build-essential
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python"]
+CMD ["app.py"]

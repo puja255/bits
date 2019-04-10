@@ -2,7 +2,6 @@ FROM python:alpine3.7
 # Update
 RUN python -m ensurepip
 RUN echo "nameserver 8.8.8.8" >> /etc/resolv.conf
-RUN service named restart
 # Install app dependencies
 RUN pip install flask
 
